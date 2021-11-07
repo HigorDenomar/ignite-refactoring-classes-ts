@@ -1,10 +1,18 @@
 import { useState } from 'react';
 import { FiEdit3, FiTrash } from 'react-icons/fi';
 
-import { Container } from './styles';
 import api from '../../services/api';
 
-export default function Food({ food, handleEditFood, handleDelete }) {
+import { FoodProps } from '../../types';
+import { Container } from './styles';
+
+type Props = {
+  food: FoodProps;
+  handleEditFood: (food: FoodProps) => void;
+  handleDelete: (id: number) => void;
+};
+
+export default function Food({ food, handleEditFood, handleDelete }: Props) {
   const [isAvailable, setIsAvailable] = useState(food.available);
 
   async function toggleAvailable() {
